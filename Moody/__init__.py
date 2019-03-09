@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask
+from flask import Flask, render_template
 
 
 def create_app(test_config=None):
@@ -26,10 +26,6 @@ def create_app(test_config=None):
     except OSError:
         pass
 
-    @app.route('/hello')
-    def hello():
-        return 'Hello, World!'
-
     # register the database commands
     from Moody import db
     db.init_app(app)
@@ -38,6 +34,10 @@ def create_app(test_config=None):
     from Moody import auth, blog
     app.register_blueprint(auth.bp)
     app.register_blueprint(blog.bp)
+
+    @app.route('/about/')
+    def about():
+        return render_template("about/about.html")
 
     # make url_for('index') == url_for('blog.index')
     # in another app, you might define a separate main index here with
