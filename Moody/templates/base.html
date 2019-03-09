@@ -1,18 +1,23 @@
 <!doctype html>
-<title>{% block title %}{% endblock %} - Flaskr</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-<nav>
-  <h1><a href="{{ url_for('index') }}">Flaskr</a></h1>
-  <ul>
-    {% if g.user %}
-      <li><span>{{ g.user['username'] }}</span>
-      <li><a href="{{ url_for('auth.logout') }}">Log Out</a>
-    {% else %}
-      <li><a href="{{ url_for('auth.register') }}">Register</a>
-      <li><a href="{{ url_for('auth.login') }}">Log In</a>
-    {% endif %}
-  </ul>
-</nav>
+<title>{% block title %}{% endblock %} - Moody</title>
+
+<!-- Custom fonts for this template-->
+<link rel="stylesheet" href="{{ url_for('static', filename='./vendor/fontawesome-free/css/all.min.css') }}">
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+<!-- Custom styles for this template-->
+<link rel="stylesheet" href="{{ url_for('static', filename='./css/sb-admin-2.min.css') }}">
+
+
+
+{% if g.user %}
+<li><span>{{ g.user['username'] }}</span>
+<li><a href="{{ url_for('auth.logout') }}">Log Out</a>
+{% else %}
+<li><a href="{{ url_for('auth.register') }}">Register</a>
+<li><a href="{{ url_for('auth.login') }}">Log In</a>
+{% endif %}
+
 <section class="content">
   <header>
     {% block header %}{% endblock %}
