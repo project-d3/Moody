@@ -2,18 +2,18 @@ import io
 
 from setuptools import find_packages, setup
 
-with io.open('README.rst', 'rt', encoding='utf8') as f:
+with io.open('README.md', 'rt', encoding='utf8') as f:
     readme = f.read()
 
 setup(
     name='Moody',
     version='1.0.0',
-    url='http://flask.pocoo.org/docs/tutorial/',
+    url='https://github.com/Ludikrous/Moody',
     license='BSD',
-    maintainer='',
+    maintainer='Ludikrous, Nikolay-Pomytkin, ryanmao725',
     maintainer_email='',
-    description='The basic blog app built in the Flask tutorial.',
-    long_description=readme,
+    description='A facial expression recognition app that allows users to track their moods over time.',
+    long_description=README,
     packages=find_packages(),
     include_package_data=True,
     zip_safe=False,
