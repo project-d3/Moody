@@ -15,10 +15,6 @@ CREATE TABLE user (
 
 
 
-
-
-
-
 CREATE TABLE post (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   author_id INTEGER NOT NULL,

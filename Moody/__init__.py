@@ -31,9 +31,9 @@ def create_app(test_config=None):
     db.init_app(app)
 
     # apply the blueprints to the app
-    from Moody import auth, blog
+    from Moody import auth, dashboard
     app.register_blueprint(auth.bp)
-    app.register_blueprint(blog.bp)
+    app.register_blueprint(dashboard.bp)
 
     @app.route('/about/')
     def about():

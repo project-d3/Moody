@@ -45,6 +45,10 @@ def register():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
+        name = request.form['name']
+        age = request.form['age']
+        gender = request.form['gender']
+
         db = get_db()
         error = None
 
@@ -61,8 +65,8 @@ def register():
             # the name is available, store it in the database and go to
             # the login page
             db.execute(
-                'INSERT INTO user (username, password) VALUES (?, ?)',
-                (username, generate_password_hash(password))
+                'INSERT INTO user (username, password, name, age, gender) VALUES (?, ?, ?, ?, ?)',
+                (username, generate_password_hash(password), name, age, gender)
             )
             db.commit()
             return redirect(url_for('auth.login'))
