@@ -37,7 +37,7 @@ def create_app(test_config=None):
 
     @app.route('/about/')
     def about():
-        return render_template("about/about.html")
+        return render_template("about.html")
 
     # make url_for('index') == url_for('blog.index')
     # in another app, you might define a separate main index here with
