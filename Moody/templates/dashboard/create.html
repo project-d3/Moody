@@ -14,14 +14,12 @@
       <p>Try to get a clear image of your face when taking the photo.</p>
     </div>
     <video autoplay id="video" class="rounded m-1"></video>
-    <div class="text-center">
+    <form class="text-center" method="post">
+      <input type="text" id="img" hidden="hidden">
       <input type="submit" class="btn btn-primary btn-user btn-lg" value="Capture" id="capture" name="capture">
-    </div>
+      <input type="submit" hidden="hidden" value="pass" name="pass" id="pass">
+    </form>
   </div>
-</div>
-
-<div class="text-center">
-  <img id="photo">
 </div>
 
 <script>
@@ -45,8 +43,15 @@
     canvas.height = 480;
     canvas.getContext('2d').drawImage(video, 0, 0);
 
-    const photo = document.getElementById('photo');
-    photo.src = canvas.toDataURL('image/webp');
+    const photo = canvas.toDataURL('image/png');
+
+    const pass = document.getElementById('pass');
+    const img = document.getElementById('img');
+    img.setAttribute(value, photo);
+    console.log(img.value);
+    pass.click();
+
+
   }
 </script>
 {% endblock %}

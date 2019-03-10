@@ -56,7 +56,12 @@ def create():
 
     return render_template('dashboard/create.html')
 
-
+@bp.route('/show', methods=('GET', 'POST'))
+@login_required
+def show():
+    if request.method == 'POST':
+        img_input = request.form['pass']
+    return redirect(url_for('dashboard.show'))
 
 
 #commenting out get post route
