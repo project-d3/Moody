@@ -36,8 +36,10 @@ def index():
 def create():
     """Create a new post for the current user."""
     if request.method == 'POST':
-        f = request.files['file']
+        f = request.form['file']
+
         print(type(f))
+        print(f)
 
         mood_type = "Sad"
 
