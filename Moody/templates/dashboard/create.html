@@ -6,25 +6,47 @@
 
 {% block content %}
 <hr>
-<h1 class="text-center m-1">Capture Photo</h1>
 
-
-<div class="text-center">
-  <video autoplay class="rounded"></video>
-  <div class="text-center">
-    <input method="post" type="submit" class="btn btn-primary btn-user btn-lg" value="Capture" id="capture" name="capture">
-  </div>
-  <div class="card m-1">
-    <div class="card-body">
-      <p class="card-text">Try to get a clear image of your face when taking the photo for best results</p>
+<div class="text-center container">
+  <div class="card">
+    <div class="card-header">
+      <h1 class="text-center">Capture Photo</h1>
+      <p>Try to get a clear image of your face when taking the photo.</p>
+    </div>
+    <video autoplay id="video" class="rounded m-1"></video>
+    <div class="text-center">
+      <input type="submit" class="btn btn-primary btn-user btn-lg" value="Capture" id="capture" name="capture">
     </div>
   </div>
 </div>
 
+<div class="text-center">
+  <img id="photo">
+</div>
+
 <script>
-  const constraints = { video: true};
-  const video = document.querySelector('video');
+  const constraints = {
+    video: {width: {exact: 480}, height: {exact: 480}}
+  };
 
   navigator.mediaDevices.getUserMedia(constraints).then((stream) => {video.srcObject = stream});
+
+  photoButton = document.getElementById('capture');
+
+  photoButton.addEventListener('click', function(event){
+    captureImage();
+    event.preventDefault();
+  }, false);
+
+  function captureImage(){
+    const canvas = document.createElement('canvas');
+
+    canvas.width = 480;
+    canvas.height = 480;
+    canvas.getContext('2d').drawImage(video, 0, 0);
+
+    const photo = document.getElementById('photo');
+    photo.src = canvas.toDataURL('image/webp');
+  }
 </script>
 {% endblock %}
