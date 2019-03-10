@@ -6,7 +6,7 @@ import sys
 import PIL
 import cv2
 
-face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
+face_cascade = cv2.CascadeClassifier('/media/nikolay/Pomytkin/projects/Moody/Moody/haarcascade_frontalface_default.xml')
 
 batch_size = 1
 img_width = 48
@@ -18,11 +18,13 @@ def load_process_image(fileloc):
 	img = cv2.imread(fileloc)
 	gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 	faces = face_cascade.detectMultiScale(gray, 1.3, 5)
+
 	for (x,y,w,h) in faces:
 		print(x,y,w,h)
 		cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)
 		crop_gray = gray[y:y+h, x:x+w]
 		resized_gray = cv2.resize(crop_gray, (48,48))
+		
 	return resized_gray
 
 
@@ -45,5 +47,5 @@ def make_prediction(r_image, modelloc):
 
 def do_all(fileloc):
 	r_image = load_process_image(fileloc)
-	emotion = make_prediction(r_image, "classifier_b.h5")
+	emotion = make_prediction(r_image, "classifier2.h5")
 	return emotion

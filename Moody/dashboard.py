@@ -74,7 +74,7 @@ def create():
         rgb_im.save('Moody/test_image.jpg')
 
 
-        mood_type = ModelDriver.do_all('test_image.jpg')
+        mood_type = ModelDriver.do_all(filename)
 
         error = None
 
