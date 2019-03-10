@@ -24,7 +24,18 @@
             <!-- Page Heading -->
             <br>
             <br>
-  
+            <div class="row mb-4 text-center">
+              <div class="col-md-10 offset-1">
+                <div class="card">
+                  <div class="card-header">
+                    <h1 class="card-title">Have a quote!</h1>
+                  </div>
+                  <div class="card-body">
+                    <p id="quote"></p>
+                  </div>
+                </div>
+              </div>
+            </div>
             <!-- User information card -->
 
             <div class="row">
@@ -121,7 +132,7 @@
                   <div class="card-body">
                     <div class="row no-gutters align-items-center">
                       <div class="col mr-2">
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ moods[0].mood_type }}</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800" id="mood">{{ moods[-1].mood_type }}</div>
                       </div>
                       <div class="col-auto">
                         <i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -241,10 +252,32 @@
 
 
   <!-- Page level plugins -->
- <script src="{{ url_for('static', filename='./vendor/chart.js/Chart.min.js')}}"></script>
+  <script src="{{ url_for('static', filename='./vendor/chart.js/Chart.min.js')}}"></script>
   <!-- Page level custom scripts -->
   <script src="{{ url_for('static', filename='js/chart-1.js') }}"></script>
 
+  <script>
+
+    const happiness = ["If you want to be happy, be.","Dream as if you'll live forever, live as if you'll die today.", "Doing what you like is freedom. Liking what you do is happiness.", "If you want to be happy, set a goal that commands your thoughts, liberates your energy, and inspires your hopes."];
+    const surprise = ["Would you like to know your future? If your answer is yes, think again. Not knowing is the greatest life motivator. So enjoy, endure, survive each moment as it comes to you in its proper sequence, a surprise.","Expect nothing. Live frugally on surprise.","The moments of happiness we enjoy take us by surprise. It is not that we seize them, but that they seize us."];
+    const neutral = ["There is no life as complete as the life that is lived by choice.","In the end, it's not about the years in your life that count. It's the life in your years.","Life isn't about finding yourself. Life is about creating yourself.","No one finds life worth living - one has to make it worth living."];
+    const angry = ["For every minute you remain angry, you give up sixty seconds of peace of mind.","People won't have time for you if you are always angry or complaining.","To be angry is to revenge the faults of others on ourselves.","When angry count to ten before you speak. If very angry, count to one hundred."];
+    const depressed = ["Our greatest glory is not in never falling, but in rising every time we fall.","It does not matter how slowly you go as long as you do not stop.","Success is not final, failure is not fatal: it is the courage to continue that counts.","Hardships often prepare ordinary people for an extraordinary destiny.","Believe in yourself. You are braver than you think, more talented than you know, and capable of more than you imagine."];
+
+    const mood = document.getElementById('mood');
+    if (mood == "Happiness") {
+
+    } else if (mood == "Surprise") {
+
+    } else if (mood == "Anger") {
+
+    } else if (mood == "Neutral") {
+
+    } else {
+
+    }
+  
+  </script>
 
 
 
