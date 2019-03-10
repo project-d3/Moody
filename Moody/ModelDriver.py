@@ -6,6 +6,9 @@ import sys
 import PIL
 import cv2
 
+from keras import backend as K
+
+
 face_cascade = cv2.CascadeClassifier('/media/nikolay/Pomytkin/projects/Moody/Moody/haarcascade_frontalface_default.xml')
 
 batch_size = 1
@@ -19,12 +22,15 @@ def load_process_image(fileloc):
 	gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 	faces = face_cascade.detectMultiScale(gray, 1.3, 5)
 
+	print(type(faces))
+	print(gray)
+
 	for (x,y,w,h) in faces:
 		print(x,y,w,h)
 		cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)
 		crop_gray = gray[y:y+h, x:x+w]
 		resized_gray = cv2.resize(crop_gray, (48,48))
-		
+
 	return resized_gray
 
 
@@ -36,6 +42,7 @@ def get_emotion(predictions):
 	return emotion
 
 def make_prediction(r_image, modelloc):
+	K.clear_session()
 	model = load_model(modelloc)
 	model.summary()  #Verifying model structure
 	#load image
@@ -43,9 +50,9 @@ def make_prediction(r_image, modelloc):
 	predictions = model.predict(image, 1 )
 	emotion = get_emotion(predictions)
 	print(predictions)
-	print(emotion)
+	return emotion
 
 def do_all(fileloc):
 	r_image = load_process_image(fileloc)
-	emotion = make_prediction(r_image, "classifier2.h5")
+	emotion = make_prediction(r_image, "/media/nikolay/Pomytkin/projects/Moody/Moody/classifier2.h5")
 	return emotion

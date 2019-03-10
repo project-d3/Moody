@@ -44,7 +44,8 @@ def index():
         for key, value in mood_counter.items():
             mood_counter[key] = value/len(moods) * 100
 
-        return render_template('dashboard/index.html', moods=moods, moods_size=len(moods), frequent_mood=frequent_mood, mood_distribution = mood_counter)
+        print(moods[-1]['mood_type'])
+        return render_template('dashboard/index.html', moods=moods, moods_size=len(moods), last_mood=moods[-1],frequent_mood=frequent_mood, mood_distribution=mood_counter)
 
     return render_template('about.html')
 
@@ -75,23 +76,21 @@ def create():
 
 
         mood_type = ModelDriver.do_all(filename)
-
-        error = None
+        mood_type = str(mood_type)
+        print(mood_type)
 
         if not mood_type:
             error = 'mood_type is required.'
 
-        if error is not None:
-            flash(error)
-        else:
-            db = get_db()
-            db.execute(
-                'INSERT INTO mood (mood_type, author_id)'
-                ' VALUES (?,  ?)',
-                (mood_type, g.user['id'])
-            )
-            db.commit()
-            return redirect(url_for('dashboard.index'))
+        
+        db = get_db()
+        db.execute(
+            'INSERT INTO mood (mood_type, author_id)'
+            ' VALUES (?,  ?)',
+            (mood_type, g.user['id'])
+        )
+        db.commit()
+        return redirect(url_for('dashboard.index'))
 
     return render_template('dashboard/create.html')
 
