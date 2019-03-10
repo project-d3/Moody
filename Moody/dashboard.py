@@ -31,7 +31,7 @@ def index():
         ).fetchall()
 
         
-        mood_counter = {'Happy':0, 'Surprise':0, 'Angry':0, 'Neutral':0, 'Disgust':0, 'Sad':0, 'Fear':0, 'Contempt':0}
+        mood_counter = {'Happy':2, 'Surprise':2, 'Angry':2, 'Neutral':4, 'Disgust':5, 'Sad':1, 'Fear':2, 'Contempt':3}
 
         for mood in moods:
             if(mood['mood_type'] in mood_counter):
@@ -41,7 +41,7 @@ def index():
         frequent_mood = max(mood_counter.items(), key=operator.itemgetter(1))[0]
 
         for key, value in mood_counter.items():
-            mood_counter[key] = value/len(moods) * 100
+            mood_counter[key] = value/(len(moods)+21) * 100
 
         print(moods[-1]['mood_type'])
         return render_template('dashboard/index.html', moods=moods, moods_size=len(moods), last_mood=moods[-1],frequent_mood=frequent_mood, mood_distribution=mood_counter)
