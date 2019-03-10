@@ -29,78 +29,70 @@
 
             <!-- User information card -->
 
-          <div class="container">
             <div class="row">
 
-              <div class="col-md-8">
+              <div class="col-md-6">
                   <div class="card shadow mb-4">
                       <div class="card-header py-3">
-                        <h4 class="m-0 font-weight-bold text-primary text-center">Welcome to Nikolay Pomytkin's Board!</h6>
+                        <h4 class="m-0 font-weight-bold text-primary text-center">Welcome to {{ g.user['name'] }}'s Board!</h6>
                       </div>
 
                       <ul class="list-group list-group-flush">
-                          <li class="list-group-item">Cras justo odio</li>
-                          <li class="list-group-item">Dapibus ac facilisis in</li>
-                          <li class="list-group-item">Vestibulum at eros</li>
+                          <li class="list-group-item">Email: {{ g.user['username'] }}</li>
+                          <li class="list-group-item">Age: {{ g.user['age'] }}</li>
+                          <li class="list-group-item">Gender: {{ g.user['gender'] }}</li>
                       </ul>
 
                       <div class="card-body text-center">
-                        
                       
                         <a href="{{ url_for('dashboard.create') }}" class="btn btn-primary">Log a Mood</a>
 
                       </div>
+
                     </div>
               </div>
 
 
 
-          <div class="col-md-4">
+          <div class="col-md-6">
             <!-- top cards -->
             
-              
+            <div class="row">
+
               <!-- Number of Moods logged card -->
-              <div class="row">
-                <div class="card border-left-primary shadow h-100 py-2">
-                  <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                      <div class="col mr-2">
+              <div class="col-md-4">
+                  <div class="card border-left-primary shadow h-100">
+
+                    <div class="card-header">
                         <div class="text-s font-weight-bold text-primary text-uppercase mb-1">Number of Moods Logged</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">500</div>
-                      </div>
-                      <div class="col-auto">
-                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                    </div>
+
+                    <div class="card-body">
+                      <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                          <div class="h5 mb-0 font-weight-bold text-gray-800">500</div>
+                        </div>
+                        <div class="col-auto">
+                          <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
               </div>
-  
-              <!-- Last Logged Mood -->
-              <div class="row">
-                <div class="card border-left-success shadow h-100 py-2">
-                  <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                      <div class="col mr-2">
-                        <div class="text-s font-weight-bold text-success text-uppercase mb-1">Last Logged Mood</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">Sad</div>
-                      </div>
-                      <div class="col-auto">
-                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+
   
   
               <!-- Most Frequent Mood -->
-              <div class="row">
-                <div class="card border-left-warning shadow h-100 py-2">
+            <div class="col-md-4">
+                <div class="card border-left-primary shadow h-100">
+                  
+                  <div class="card-header">
+                      <div class="text-s font-weight-bold text-primary text-uppercase mb-1">Last Logged Mood</div>
+                  </div>
+
                   <div class="card-body">
                     <div class="row no-gutters align-items-center">
                       <div class="col mr-2">
-                        <div class="text-s font-weight-bold text-warning text-uppercase mb-1">Most Frequent</div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
                       </div>
                       <div class="col-auto">
@@ -109,13 +101,44 @@
                     </div>
                   </div>
                 </div>
+            </div>
+              
+              <!-- Most Frequent Mood -->
+            <div class="col-md-4">
+                  <div class="card border-left-primary shadow">
+
+                    <div class="card-header">
+                        <div class="text-s font-weight-bold text-primary text-uppercase mb-1">Most Frequent Mood</div>
+                    </div>
+
+                    <div class="card-body">
+                      <div class="row no-gutters align-items-center">
+
+
+                        <div class="col mr-2">
+                          <div class="h5 mb-0 font-weight-bold text-gray-800">Sad</div>
+                        </div>
+
+                        <div class="col-auto">
+                            <i class="fas fa-comments fa-2x text-gray-300"></i>
+                          </div>
+
+                      </div>
+                    </div>
+                  </div>
               </div>
-          
-        
+
+
+
+            </div>
+
+
+          </div>
+
+
         </div>
 
         </div>
-      </div>
             <!-- Content Row -->
   
             <div class="row">
