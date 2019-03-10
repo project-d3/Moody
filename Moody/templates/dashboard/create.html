@@ -1,10 +1,30 @@
 {% extends 'base.html' %}
 
 {% block header %}
-  <h1>{% block title %}New Post{% endblock %}</h1>
+  <h1>{% block title %}Log A Mood{% endblock %}</h1>
 {% endblock %}
 
 {% block content %}
 <hr>
-<h1>Take a Picture using </h1>
+<h1 class="text-center m-1">Capture Photo</h1>
+
+
+<div class="text-center">
+  <video autoplay class="rounded"></video>
+  <div class="text-center">
+    <input method="post" type="submit" class="btn btn-primary btn-user btn-lg" value="Capture" id="capture" name="capture">
+  </div>
+  <div class="card m-1">
+    <div class="card-body">
+      <p class="card-text">Try to get a clear image of your face when taking the photo for best results</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  const constraints = { video: true};
+  const video = document.querySelector('video');
+
+  navigator.mediaDevices.getUserMedia(constraints).then((stream) => {video.srcObject = stream});
+</script>
 {% endblock %}
