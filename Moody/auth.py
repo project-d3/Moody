@@ -70,7 +70,7 @@ def register():
                 (username, generate_password_hash(password), name, age, gender)
             )
             db.commit()
-            return redirect(url_for('auth.login'))
+            return redirect(url_for('dashboard.index'))
 
         flash(error)
 
