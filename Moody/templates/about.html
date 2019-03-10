@@ -9,22 +9,49 @@
 <br>
 
 <div class="container text-center">
-    <div class="row">
-        <div class="card col-md-4" id="d">
-            <div class="card-header">
-                <h1 class="text-center">Dhanvee</h1>
-            </div>
-        </div>
-        <div class="card col-md-4" id="n">
-            <div class="card-header">   
-                <h1 class="text-center">Nikolay</h1>
-            </div>
-        </div>
-        <div class="card col-md-4" id="r">
-            <div class="card-header">
-            <h1 class="text-center">Ryan</h1>
+    <div class="row mb-4">
+        <div class="col-md-10 offset-1">
+            <div class="card m-1">
+                <h1 class="card-header">About Moody</h1>
+                <div class="card-body">
+                    <p>
+                        There has a been recent surge in popularity regarding students and mental health. The purpose of this project is to help suffering students undergoing large amounts of stress to be able to keep track of their moods over time. Moody uses facial expression recognization to determine how the user is feeling, and provides dynamic graphs to analytically determine trends in the user's moods.
+                    </p>
+                    <a href="{{ url_for('auth.register') }}" class="btn btn-primary btn-lg rounded">Get Started</a>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+<div class="container text-center">
+    <div class="row">
+        <div class="card col-md-4 p-1" id="d">
+            <div class="card-header">
+                <h1 class="text-center">Dhanvee</h1>
+            </div>
+            <div class="card-body">
+                <p>Eager to learn Computer Science student with experience in Python, Java, Javascript, machine learning concepts and web fundamentals.</p>
+            </div>
+        </div>
+        <div class="card col-md-4 p-1" id="n">
+            <div class="card-header">   
+                <h1 class="text-center">Nikolay</h1>
+            </div>
+            <div class="card-body">
+                <p>I am a driven, active student at the University of Maryland working towards a Bachelor's of Science in Computer Science with interested in the fields of data science and deep learning.</p>
+            </div>
+        </div>
+        <div class="card col-md-4 p-1" id="r">
+            <div class="card-header">
+                <h1 class="text-center">Ryan</h1>
+            </div>
+            <div class="card-body">
+                <p>Rutgers University undergrad student studying for a double major in computer science and math!</p>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<p class="text-center">Moody &copy; 2019</p>
 {% endblock %}
