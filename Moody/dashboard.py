@@ -26,7 +26,7 @@ def index():
 
         return render_template('dashboard/index.html', moods=moods, moods_size=len(moods))
 
-    return render_template('about/about.html')
+    return render_template('about.html')
 
 
 
