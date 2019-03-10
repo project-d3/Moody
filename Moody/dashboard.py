@@ -3,6 +3,10 @@ from flask import (
 )
 from werkzeug.exceptions import abort
 
+import base64
+from PIL import Image
+import io
+
 from Moody.auth import login_required
 from Moody.db import get_db
 
@@ -38,8 +42,21 @@ def create():
     if request.method == 'POST':
         f = request.form['file']
 
-        print(type(f))
-        print(f)
+        f += "======================"
+        base64_image_str = f[f.find(",")+1:]
+
+        print(base64_image_str)
+
+        imgdata = base64.b64decode(base64_image_str) #I use imgdata as this variable itself in references below
+        filename = 'Moody/uploads/test_image.png'
+
+        with open(filename, 'wb') as fil3:
+            fil3.write(imgdata)
+
+        im = Image.open("Moody/uploads/test_image.png")
+        rgb_im = im.convert('RGB')
+        rgb_im.save('Moody/uploads/colors.jpg')
+
 
         mood_type = "Sad"
 
