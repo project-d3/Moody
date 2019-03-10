@@ -17,7 +17,10 @@
                     <p>
                         There has a been recent surge in popularity regarding students and mental health. The purpose of this project is to help suffering students undergoing large amounts of stress to be able to keep track of their moods over time. Moody uses facial expression recognization to determine how the user is feeling, and provides dynamic graphs to analytically determine trends in the user's moods.
                     </p>
+                    {% if g.user %}
+                    {% else %}
                     <a href="{{ url_for('auth.register') }}" class="btn btn-primary btn-lg rounded">Get Started</a>
+                    {% endif %}
                 </div>
             </div>
         </div>
