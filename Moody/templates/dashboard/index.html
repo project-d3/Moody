@@ -25,21 +25,6 @@
             <br>
             <br>
   
-            {% for mood in moods %}
-            <article class="post">
-              <header>
-                <div>
-                  <h1>{{ mood['mood_type'] }}</h1>
-                  <div class="about">by {{ mood['username'] }} on {{ mood['created'].strftime('%Y-%m-%d') }}</div>
-                </div>
-
-              </header>
-            </article>
-            {% if not loop.last %}
-              <hr>
-            {% endif %}
-          {% endfor %}
-
             <!-- User information card -->
 
             <div class="row">
@@ -136,7 +121,7 @@
                   <div class="card-body">
                     <div class="row no-gutters align-items-center">
                       <div class="col mr-2">
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ moods|first }}</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ moods[0].mood_type }}</div>
                       </div>
                       <div class="col-auto">
                         <i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -159,7 +144,7 @@
 
 
                         <div class="col mr-2">
-                          <div class="h5 mb-0 font-weight-bold text-gray-800">Sad</div>
+                          <div class="h5 mb-0 font-weight-bold text-gray-800">{{ frequent_mood }}</div>
                         </div>
 
                         <div class="col-auto">
@@ -256,10 +241,9 @@
 
 
   <!-- Page level plugins -->
-  <script src="{{ url_for('static', filename='./vendor/chart.js/Chart.min.js')}}"></script>
-
+ <script src="{{ url_for('static', filename='./vendor/chart.js/Chart.min.js')}}"></script>
   <!-- Page level custom scripts -->
-  <script src="{{ url_for('static', filename='./js/chart-area.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/chart-1.js') }}"></script>
 
 
 

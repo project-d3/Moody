@@ -10,6 +10,8 @@ import io
 from Moody.auth import login_required
 from Moody.db import get_db
 
+import operator
+
 bp = Blueprint('dashboard', __name__)
 
 
@@ -26,9 +28,21 @@ def index():
             (g.user['id'],)
         ).fetchall()
 
-        print(moods)
+        
+        mood_counter = {}
 
-        return render_template('dashboard/index.html', moods=moods, moods_size=len(moods))
+        for mood in moods:
+            if(mood['mood_type'] in mood_counter):
+                mood_counter[mood['mood_type']] += 1
+            else:
+                mood_counter[mood['mood_type']] = 1
+
+        frequent_mood = max(mood_counter.items(), key=operator.itemgetter(1))[0]
+
+        for key, value in mood_counter.items():
+            mood_counter[key] = value/len(moods) * 100
+
+        return render_template('dashboard/index.html', moods=moods, moods_size=len(moods), frequent_mood=frequent_mood, mood_distribution = mood_counter)
 
     return render_template('about.html')
 
@@ -55,7 +69,7 @@ def create():
 
         im = Image.open("Moody/uploads/test_image.png")
         rgb_im = im.convert('RGB')
-        rgb_im.save('Moody/uploads/colors.jpg')
+        rgb_im.save('Moody/uploads/test_image.jpg')
 
 
         mood_type = "Sad"
