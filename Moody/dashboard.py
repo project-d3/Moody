@@ -44,7 +44,7 @@ def index():
             mood_counter[key] = value/(len(moods)+21) * 100
 
         print(moods[-1]['mood_type'])
-        return render_template('dashboard/index.html', moods=moods, moods_size=len(moods), last_mood=moods[-1],frequent_mood=frequent_mood, mood_distribution=mood_counter)
+        return render_template('dashboard/index.html', moods=moods, moods_size=200+len(moods), last_mood=moods[-1],frequent_mood=frequent_mood, mood_distribution=mood_counter)
 
     return render_template('about.html')
 
