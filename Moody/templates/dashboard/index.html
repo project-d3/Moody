@@ -31,8 +31,8 @@
                     <h1 class="card-title">Have a quote!</h1>
                   </div>
                   <div class="card-body">
-                    <p id="quote"></p>
-                    <i id="icon"></i>
+                    <h3 id="quote"></h3>
+                    <i id="icon" class="fa-2x"></i>
                   </div>
                 </div>
               </div>
@@ -272,23 +272,23 @@
 
       if (mood.innerHTML == "Happy") {
         quote.innerHTML = happiness[Math.floor(Math.random()*happiness.length)];
-        icon.className += "fas fa-smile-beam";
+        icon.className += " fas fa-smile-beam";
         icon2.className += " fas fa-smile-beam";
       } else if (mood.innerHTML == "Surprise") {
         quote.innerHTML = surprise[Math.floor(Math.random()*surprise.length)];
-        icon.className += "fas fa-surprise";
+        icon.className += " fas fa-surprise";
         icon2.className += " fas fa-surprise";
       } else if (mood.innerHTML == "Angry") {
         quote.innerHTML = angry[Math.floor(Math.random()*angry.length)];
-        icon.className += "fas fa-angry";
+        icon.className += " fas fa-angry";
         icon2.className += " fas fa-angry";
       } else if (mood.innerHTML == "Neutral") {
         quote.innerHTML = neutral[Math.floor(Math.random()*neutral.length)];
-        icon.className += "fas fa-meh";
+        icon.className += " fas fa-meh";
         icon2.className += " fas fa-meh";
       } else {
         quote.innerHTML = depressed[Math.floor(Math.random()*depressed.length)];
-        icon.className += "fas fa-sad-tear";
+        icon.className += " fas fa-sad-tear";
         icon2.className += " fas fa-sad-tear";
       }
     
