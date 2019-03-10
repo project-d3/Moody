@@ -36,11 +36,15 @@ def index():
 def create():
     """Create a new post for the current user."""
     if request.method == 'POST':
-        mood_type = request.form['title']
+        f = request.files['file']
+        print(type(f))
+
+        mood_type = "Sad"
+
         error = None
 
         if not mood_type:
-            error = 'Title is required.'
+            error = 'mood_type is required.'
 
         if error is not None:
             flash(error)
@@ -56,12 +60,7 @@ def create():
 
     return render_template('dashboard/create.html')
 
-@bp.route('/show', methods=('GET', 'POST'))
-@login_required
-def show():
-    if request.method == 'POST':
-        img_input = request.form['pass']
-    return redirect(url_for('dashboard.show'))
+
 
 
 #commenting out get post route
