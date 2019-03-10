@@ -31,13 +31,12 @@ def index():
         ).fetchall()
 
         
-        mood_counter = {}
+        mood_counter = {'Happy':0, 'Surprise':0, 'Angry':0, 'Neutral':0, 'Disgust':0, 'Sad':0, 'Fear':0, 'Contempt':0}
 
         for mood in moods:
             if(mood['mood_type'] in mood_counter):
                 mood_counter[mood['mood_type']] += 1
-            else:
-                mood_counter[mood['mood_type']] = 1
+            
 
         frequent_mood = max(mood_counter.items(), key=operator.itemgetter(1))[0]
 
