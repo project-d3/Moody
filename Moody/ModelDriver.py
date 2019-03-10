@@ -46,4 +46,4 @@ def make_prediction(r_image, modelloc):
 def do_all(fileloc):
 	r_image = load_process_image(fileloc)
 	emotion = make_prediction(r_image, "classifier_b.h5")
-	print(emotion)
+	return emotion

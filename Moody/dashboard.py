@@ -1,3 +1,4 @@
+from . import ModelDriver
 from flask import (
     Blueprint, flash, g, redirect, render_template, request, url_for
 )
@@ -11,6 +12,7 @@ from Moody.auth import login_required
 from Moody.db import get_db
 
 import operator
+
 
 bp = Blueprint('dashboard', __name__)
 
@@ -61,18 +63,18 @@ def create():
 
         print(base64_image_str)
 
-        imgdata = base64.b64decode(base64_image_str) #I use imgdata as this variable itself in references below
-        filename = 'Moody/uploads/test_image.png'
+        imgdata = base64.b64decode(base64_image_str)
+        filename = 'Moody/test_image.png'
 
         with open(filename, 'wb') as fil3:
             fil3.write(imgdata)
 
-        im = Image.open("Moody/uploads/test_image.png")
+        im = Image.open("Moody/test_image.png")
         rgb_im = im.convert('RGB')
-        rgb_im.save('Moody/uploads/test_image.jpg')
+        rgb_im.save('Moody/test_image.jpg')
 
 
-        mood_type = "Sad"
+        mood_type = ModelDriver.do_all('test_image.jpg')
 
         error = None
 
