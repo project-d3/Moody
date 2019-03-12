@@ -5,6 +5,7 @@
   {% if g.user %}
     <a class="action" href="{{ url_for('dashboard.create') }}">New</a>
   {% endif %}
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 {% endblock %}
 
 {% block content %}
@@ -78,7 +79,7 @@
                     <!-- Card Body -->
                     <div class="card-body">
                       <div class="chart-area">
-                        <canvas id="myAreaChart"></canvas>
+                        
                       </div>
                     </div>
                   </div>
@@ -294,6 +295,15 @@
     
     </script>
 
+    <!--Creating the chart-->
+    <script>
+      google.charts.load('current', {packages: ['corechart', 'line']});
+      google.charts.sendOnLoadCallback(drawBasic);
 
+      function drawBasic() {
+        let data = new google.visualization.DataTable();
+        data.addColumn('number', 'X');
+      }
+    </script>
 
   {% endblock %}
