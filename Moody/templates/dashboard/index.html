@@ -5,11 +5,11 @@
   {% if g.user %}
     <a class="action" href="{{ url_for('dashboard.create') }}">New</a>
   {% endif %}
-  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 {% endblock %}
 
 {% block content %}
 
+<script src="{{ url_for('static', filename='./js/charts-loader.js') }}"></script>
   <!-- Page Wrapper -->
   <div id="wrapper">
   
@@ -78,7 +78,7 @@
                     </div>
                     <!-- Card Body -->
                     <div class="card-body">
-                      <div class="chart-area">
+                      <div id="chart-div" class="chart-area">
                         
                       </div>
                     </div>
@@ -298,11 +298,28 @@
     <!--Creating the chart-->
     <script>
       google.charts.load('current', {packages: ['corechart', 'line']});
-      google.charts.sendOnLoadCallback(drawBasic);
+      google.charts.setOnLoadCallback(drawBasic);
 
       function drawBasic() {
         let data = new google.visualization.DataTable();
-        data.addColumn('number', 'X');
+        data.addColumn('number', 'month');
+        data.addColumn('number', 'happiness');
+
+        data.addRows([
+          [0,1],[1,2],[2,3],[3,4]
+        ]);
+
+        let options = {
+          hAxis: { 
+            title: 'Happiness Level'
+          },
+          vAxis: {
+            title: 'Months'
+          }
+        };
+
+        let chart = new google.visualization.LineChart(document.getElementById('chart-div'));
+        chart.draw(data, options);
       }
     </script>
 
