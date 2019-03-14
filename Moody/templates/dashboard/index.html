@@ -302,11 +302,23 @@
 
       function drawBasic() {
         let data = new google.visualization.DataTable();
-        data.addColumn('number', 'month');
+        data.addColumn('string', 'month');
         data.addColumn('number', 'happiness');
 
         data.addRows([
-          [0,1],[1,2],[2,3],[3,4]
+          ['January', 1],
+          ['February', 3],
+          ['March', 4],
+          ['April', 5],
+          ['May', 6],
+          ['June', 3],
+          ['July', 5],
+          ['August', 2],
+          ['September', 1],
+          ['October', 0],
+          ['November', 3],
+          ['December', 5],
+
         ]);
 
         let options = {
@@ -315,7 +327,8 @@
           },
           vAxis: {
             title: 'Months'
-          }
+          },
+          bezierCurve: true,
         };
 
         let chart = new google.visualization.LineChart(document.getElementById('chart-div'));
