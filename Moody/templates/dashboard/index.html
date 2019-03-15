@@ -78,8 +78,8 @@
                     </div>
                     <!-- Card Body -->
                     <div class="card-body">
-                      <div id="chart-div" class="chart-area">
-                        
+                      <div class="chart-area">
+                        <canvas id="lineChart"></canvas>
                       </div>
                     </div>
                   </div>
@@ -297,43 +297,33 @@
 
     <!--Creating the chart-->
     <script>
-      google.charts.load('current', {packages: ['corechart', 'line']});
-      google.charts.setOnLoadCallback(drawBasic);
-
-      function drawBasic() {
-        let data = new google.visualization.DataTable();
-        data.addColumn('string', 'month');
-        data.addColumn('number', 'happiness');
-
-        data.addRows([
-          ['January', 1],
-          ['February', 3],
-          ['March', 4],
-          ['April', 5],
-          ['May', 6],
-          ['June', 3],
-          ['July', 5],
-          ['August', 2],
-          ['September', 1],
-          ['October', 0],
-          ['November', 3],
-          ['December', 5],
-
-        ]);
-
-        let options = {
-          hAxis: { 
-            title: 'Happiness Level'
-          },
-          vAxis: {
-            title: 'Months'
-          },
-          bezierCurve: true,
-        };
-
-        let chart = new google.visualization.LineChart(document.getElementById('chart-div'));
-        chart.draw(data, options);
-      }
+      Chart.defaults.global.defaultFontColor = '#4e73df';
+      let cLC = document.getElementById("lineChart").getContext('2d');
+      let chart = new Chart(cLC, {
+        type: 'line',
+        data: {
+          labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+          datasets: [{
+            label: "Happiness Level",
+            data: [3,4,2,1,5,7,8,3,5,1,3,6],
+            backgroundColor: [
+              'rgba(78, 115, 223, 0.3)',
+            ],
+            fillOpacity: .01,
+            borderColor: [ '#4e73df' ]
+          }]
+        },
+        options: {
+          responsive: true,
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true
+              }
+            }]
+          }
+        }
+      });
     </script>
 
   {% endblock %}
