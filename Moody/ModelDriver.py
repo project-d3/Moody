@@ -9,7 +9,7 @@ import cv2
 from keras import backend as K
 
 
-face_cascade = cv2.CascadeClassifier('/media/nikolay/Pomytkin/projects/Moody/Moody/haarcascade_frontalface_default.xml')
+face_cascade = cv2.CascadeClassifier('/media/nikolay/Pomytkin/projects/Moody/Moody/classifier/haarcascade_frontalface_default.xml')
 
 batch_size = 1
 img_width = 48
@@ -54,5 +54,5 @@ def make_prediction(r_image, modelloc):
 
 def do_all(fileloc):
 	r_image = load_process_image(fileloc)
-	emotion = make_prediction(r_image, "/media/nikolay/Pomytkin/projects/Moody/Moody/classifier2.h5")
+	emotion = make_prediction(r_image, "/media/nikolay/Pomytkin/projects/Moody/Moody/classifier/classifier2.h5")
 	return emotion
