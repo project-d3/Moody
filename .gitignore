@@ -1,1 +1,4 @@
 *.sqlite
+*.pyc
+*.jpg
+*.png

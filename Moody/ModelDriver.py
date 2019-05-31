@@ -53,6 +53,6 @@ def make_prediction(r_image, modelloc):
 	return emotion
 
 def do_all(fileloc):
-	r_image = load_process_image(fileloc)
+	r_image = load_process_image(fileloc)	
 	emotion = make_prediction(r_image, os.getcwd() + "/Moody/classifier/classifier2.h5")
 	return emotion
